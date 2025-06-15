@@ -1,0 +1,12 @@
+<div class="overlay-box">
+  <div class="inner-box">
+    <h2 class="title font-white">{{ title }}</h2>
+    <p *ngIf="intro">{{ intro }}</p>
+    <ng-content />
+    <div class="button">
+      <button>{{ buttonText }}</button>
+    </div>
+
+    <ng-container *ngIf="additionalText" [ngTemplateOutlet]="additionalText" />
+  </div>
+</div>

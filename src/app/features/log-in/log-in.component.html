@@ -1,0 +1,18 @@
+<div>
+  <app-header />
+  <img class="login-image" src="images/log-in-image.jpg" alt="log-in">
+
+  <app-overlay-box title="Log in" buttonText="Log in">
+    <app-input placeholder="Email Address" type="text" image="mail" />
+    <app-input placeholder="Password" type="password" image="password" />
+
+    <ng-template #additionalText>
+      <div class="font-white text-center">
+        <p class="font-bold">Passwort vergessen?</p>
+        <p class="m-t-16">Neu bei Videoflix? <span class="font-bold">Jetzt hier registrieren</span></p>
+      </div>
+    </ng-template>
+  </app-overlay-box>
+
+  <app-footer />
+</div>
