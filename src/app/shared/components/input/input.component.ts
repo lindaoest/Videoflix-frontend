@@ -19,4 +19,7 @@ export class InputComponent {
 
   @Input()
   public image!: string;
+
+  @Input()
+  public formControlName!: string;
 }

@@ -4,7 +4,7 @@
     <p *ngIf="intro">{{ intro }}</p>
     <ng-content />
     <div class="button">
-      <button>{{ buttonText }}</button>
+      <button (click)="submit.emit()">{{ buttonText }}</button>
     </div>
 
     <ng-container *ngIf="additionalText" [ngTemplateOutlet]="additionalText" />

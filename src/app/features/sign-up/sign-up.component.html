@@ -1,12 +1,23 @@
-<div>
+<form [formGroup]="form">
   <app-header />
   <img class="signup-image" src="images/log-in-image.jpg" alt="sign-up">
 
-  <app-overlay-box title="Sign up" buttonText="registrieren">
-    <app-input placeholder="Email Adresse" type="text" image="mail" />
-    <app-input placeholder="Passwort" type="password" image="password" />
-    <app-input placeholder="Passwort bestätigen" type="password" image="password" />
+  <app-overlay-box title="Sign up" buttonText="registrieren" (submit)="submit()">
+    <div class="input-field">
+      <img class="icon" src="icons/mail.svg" alt="mail">
+      <input type="text" placeholder="Email Adresse" formControlName="email">
+    </div>
+
+    <div class="input-field">
+      <img class="icon" src="icons/password.svg" alt="mail">
+      <input type="password" placeholder="Passwort" formControlName="password">
+    </div>
+
+    <div class="input-field">
+      <img class="icon" src="icons/password.svg" alt="mail">
+      <input type="password" placeholder="Passwort bestätigen" formControlName="repeated_password">
+    </div>
   </app-overlay-box>
 
   <app-footer />
-</div>
+</form>

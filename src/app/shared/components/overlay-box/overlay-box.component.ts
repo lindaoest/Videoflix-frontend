@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { InputComponent } from '../input/input.component';
 import { CommonModule } from '@angular/common';
 
@@ -20,6 +20,9 @@ export class OverlayBoxComponent {
 
   @Input()
   public intro!: string;
+
+  @Output()
+  public submit = new EventEmitter()
 
   @ContentChild('additionalText')
   public additionalText!: TemplateRef<any>;
