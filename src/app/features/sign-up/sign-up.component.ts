@@ -6,6 +6,7 @@ import { InputComponent } from '../../shared/components/input/input.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,14 +22,17 @@ import { CommonModule } from '@angular/common';
 })
 export class SignUpComponent {
 
+  public errorMessage!: string;
+
   public form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
-    repeated_password: new FormControl(''),
+    repeated_password: new FormControl('')
   });
 
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
+    public router: Router
   ) { }
 
   public submit() {
@@ -39,7 +43,23 @@ export class SignUpComponent {
         "repeated_password": this.form.controls['repeated_password'].value,
       }
 
-      this.http.post('http://localhost:8000/api/registration/', body).subscribe(test => console.log('funktioniert'))
+      this.http.post('http://localhost:8000/api/registration/', body)
+      .subscribe({
+        next: (value: any) => {
+          this.router.navigate(['/']);
+          console.log(value);
+          localStorage.setItem('TOKEN', value['token'])
+
+        },
+        error: err => {
+          console.log(err.error);
+
+          this.errorMessage = err.error.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 5000);
+        }
+      })
     }
   }
 }
