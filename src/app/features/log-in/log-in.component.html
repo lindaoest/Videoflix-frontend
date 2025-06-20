@@ -2,17 +2,26 @@
   <app-header />
   <img class="login-image" src="images/log-in-image.jpg" alt="log-in">
 
-  <app-overlay-box title="Log in" buttonText="Log in">
-    <app-input placeholder="Email Address" type="text" image="mail" />
-    <app-input placeholder="Password" type="password" image="password" />
-
-    <ng-template #additionalText>
-      <div class="font-white text-center">
-        <p class="font-bold">Passwort vergessen?</p>
-        <p class="m-t-16">Neu bei Videoflix? <span class="font-bold">Jetzt hier registrieren</span></p>
+  <form [formGroup]="form">
+    <app-overlay-box title="Log in" buttonText="Log in" (submit)="submit()">
+      <div class="input-field">
+        <img class="icon" src="icons/mail.svg" alt="mail">
+        <input type="text" placeholder="Email Adresse" formControlName="email">
       </div>
-    </ng-template>
-  </app-overlay-box>
+
+      <div class="input-field">
+        <img class="icon" src="icons/password.svg" alt="mail">
+        <input type="password" placeholder="Passwort" formControlName="password">
+      </div>
+
+      <ng-template #additionalText>
+        <div class="font-white text-center">
+          <p class="font-bold">Passwort vergessen?</p>
+          <p class="m-t-16">Neu bei Videoflix? <span class="font-bold">Jetzt hier registrieren</span></p>
+        </div>
+      </ng-template>
+    </app-overlay-box>
+  </form>
 
   <app-footer />
 </div>
