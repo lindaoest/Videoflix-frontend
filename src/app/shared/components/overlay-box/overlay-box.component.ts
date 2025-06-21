@@ -21,6 +21,9 @@ export class OverlayBoxComponent {
   @Input()
   public intro!: string;
 
+  @Input()
+  public disabledButton: boolean = false;
+
   @Output()
   public submit = new EventEmitter()
 

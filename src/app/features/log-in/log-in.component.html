@@ -3,7 +3,7 @@
   <img class="login-image" src="images/log-in-image.jpg" alt="log-in">
 
   <form [formGroup]="form">
-    <app-overlay-box title="Log in" buttonText="Log in" (submit)="submit()">
+    <app-overlay-box title="Log in" buttonText="Log in" [disabledButton]="form.valid" (submit)="submit()">
       <div class="input-field">
         <img class="icon" src="icons/mail.svg" alt="mail">
         <input type="text" placeholder="Email Adresse" formControlName="email">
@@ -20,6 +20,8 @@
           <p class="m-t-16">Neu bei Videoflix? <span class="font-bold">Jetzt hier registrieren</span></p>
         </div>
       </ng-template>
+
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
     </app-overlay-box>
   </form>
 

@@ -3,7 +3,7 @@ import { HeaderComponent } from '../../shared/components/header/header.component
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { OverlayBoxComponent } from '../../shared/components/overlay-box/overlay-box.component';
 import { InputComponent } from '../../shared/components/input/input.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -25,9 +25,9 @@ export class SignUpComponent {
   public errorMessage!: string;
 
   public form: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-    repeated_password: new FormControl('')
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    repeated_password: new FormControl('', Validators.required)
   });
 
   constructor(

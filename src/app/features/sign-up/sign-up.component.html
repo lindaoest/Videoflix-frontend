@@ -2,7 +2,7 @@
   <app-header />
   <img class="signup-image" src="images/log-in-image.jpg" alt="sign-up">
 
-  <app-overlay-box title="Sign up" buttonText="registrieren" (submit)="submit()">
+  <app-overlay-box title="Sign up" buttonText="registrieren" [disabledButton]="form.valid" (submit)="submit()">
     <div class="input-field">
       <img class="icon" src="icons/mail.svg" alt="mail">
       <input type="text" placeholder="Email Adresse" formControlName="email">

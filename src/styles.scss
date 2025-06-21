@@ -4,6 +4,10 @@ button {
   background-color: #2E3EDF;
   color: #FFFFFF;
   padding: 12px 24px;
+
+  &:disabled {
+    background-color: #5E5E5E;
+  }
 }
 
 input {
@@ -70,4 +74,8 @@ p {
 
 .c-pointer {
   cursor: pointer;
+}
+
+.w-full {
+  width: 100%;
 }
