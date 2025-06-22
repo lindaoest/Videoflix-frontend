@@ -29,4 +29,7 @@ export class OverlayBoxComponent {
 
   @ContentChild('additionalText')
   public additionalText!: TemplateRef<any>;
+
+  @ContentChild('subline')
+  public subline!: TemplateRef<any>;
 }

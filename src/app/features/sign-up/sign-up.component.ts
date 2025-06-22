@@ -7,6 +7,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -32,7 +33,8 @@ export class SignUpComponent {
 
   constructor(
     public http: HttpClient,
-    public router: Router
+    public router: Router,
+    private authService: AuthService
   ) { }
 
   public submit() {
@@ -46,10 +48,9 @@ export class SignUpComponent {
       this.http.post('http://localhost:8000/api/registration/', body)
       .subscribe({
         next: (value: any) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/overview']);
           console.log(value);
-          localStorage.setItem('TOKEN', value['token'])
-
+          this.authService.logIn(value['token']);
         },
         error: err => {
           console.log(err.error);
