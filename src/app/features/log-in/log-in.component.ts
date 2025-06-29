@@ -43,7 +43,7 @@ export class LogInComponent {
       "password": this.form.controls['password'].value,
     }
 
-    this.http.post('http://localhost:8000/api/login/', body)
+    this.http.post('http://localhost:8000/api/login/', body, { withCredentials: true })
     .subscribe({
       next: (value: any) => {
         this.authService.logIn(value['token']);
