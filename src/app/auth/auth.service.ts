@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,7 +8,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   public logIn(token: string) {
@@ -19,7 +21,13 @@ export class AuthService {
   }
 
   public logOut() {
-    localStorage.removeItem('TOKEN');
-    this.router.navigate(['/log-in'])
+    // localStorage.removeItem('TOKEN');
+    this.http.post('http://localhost:8000/api/logout/', null, {
+      withCredentials: true
+    })
+    .subscribe({
+      next: value => this.router.navigate(['/log-in']),
+      error: err => console.error('Fehler beim Logout:', err)
+    })
   }
 }

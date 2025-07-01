@@ -31,7 +31,7 @@ export class VideoOfferComponent {
     private authService: AuthService,
     public http: HttpClient
   ) {
-    this.items$ = http.get('http://localhost:4200/api/videos/', { withCredentials: true });
+    this.items$ = http.get('http://localhost:8000/api/videos/', { withCredentials: true });
   }
 
   public logOut() {
