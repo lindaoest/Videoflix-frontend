@@ -3,15 +3,29 @@
     <button class="c-pointer" (click)="logOut()">Log Out</button>
   </app-header>
 
-  <ng-container *ngIf="items$ | async as items">
-    <div class="hero content-container">
-      <div class="content">
-        <h2>Breakout</h2>
-        <p>In a high-security prison, a wrongly convicted man formulates a meticulous plan to break out and prove his innocence. He must navigate a web of alliances and betrayals to reclaim his freedom and expose the truth.</p>
-        <button>Play</button>
+  <div class="content-container">
+
+    <ng-container *ngIf="items$ | async as items">
+      <div class="hero">
+        <div class="content">
+          <h2>Breakout</h2>
+          <p>In a high-security prison, a wrongly convicted man formulates a meticulous plan to break out and prove his innocence. He must navigate a web of alliances and betrayals to reclaim his freedom and expose the truth.</p>
+          <button>Play</button>
+        </div>
       </div>
-    </div>
-  </ng-container>
+
+      <div class="videos-container">
+        <ng-container *ngFor="let item of items">
+          <h3>{{ item.genre }}</h3>
+          <div class="videos">
+            <ng-container *ngFor="let video of item.videos">
+              <img class="image" [src]="video.thumbnail" alt="">
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
 
   <app-footer />
 </div>

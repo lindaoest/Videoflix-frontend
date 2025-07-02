@@ -10,11 +10,25 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'videoflix';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8000/api/api/csrf/', { withCredentials: true }).subscribe(() => {
+    console.log('test2');
+    this.http.get(
+      'http://localhost:8000/api/api/csrf/',
+      { withCredentials: true }
+    )
+    .subscribe(() => {
       console.log('CSRF cookie gesetzt');
+    });
+
+    this.http.post(
+      'http://localhost:8000/api/token/refresh/',
+      null,
+      { withCredentials: true }
+    )
+    .subscribe(() => {
+      console.log('refresh token');
     });
   }
 }

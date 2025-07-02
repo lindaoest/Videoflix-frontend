@@ -51,7 +51,7 @@
        url('../public/fonts/dm-sans-v16-latin/dm-sans-v16-latin-700.svg#DMSans') format('svg'); /* Legacy iOS */
 }
 
-body {
+body, html {
   margin: 0;
   font-size: 18px;
   font-family: 'DM Sans';

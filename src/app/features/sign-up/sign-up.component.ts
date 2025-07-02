@@ -45,12 +45,12 @@ export class SignUpComponent {
         "repeated_password": this.form.controls['repeated_password'].value,
       }
 
-      this.http.post('http://localhost:8000/api/registration/', body)
+      this.http.post('http://localhost:8000/api/registration/', body, { withCredentials: true })
       .subscribe({
         next: (value: any) => {
           this.router.navigate(['/overview']);
-          console.log(value);
-          this.authService.logIn(value['token']);
+          // console.log(value);
+          // this.authService.logIn(value['token']);
         },
         error: err => {
           console.log(err.error);
