@@ -1,31 +1,39 @@
 <div>
   <app-header>
-    <button class="c-pointer" (click)="logOut()">Log Out</button>
+    <app-button class="c-pointer" icon="images/logout.svg" text="Log out" (click)="logOut()" />
   </app-header>
 
   <div class="content-container">
 
-    <ng-container *ngIf="items$ | async as items">
+    <ng-container *ngIf="hero$ | async as hero">
       <div class="hero">
-        <div class="content">
-          <h2>Breakout</h2>
-          <p>In a high-security prison, a wrongly convicted man formulates a meticulous plan to break out and prove his innocence. He must navigate a web of alliances and betrayals to reclaim his freedom and expose the truth.</p>
-          <button>Play</button>
+        <div class="content font-white">
+          <h1 *ngIf="hero.title">{{hero.title}}</h1>
+          <p *ngIf="hero.description">{{ hero.description }}</p>
+          <app-button icon="images/play_arrow.svg" text="Play" />
+        </div>
+        <div class="image-container">
+          <div class="filter"></div>
+          <img [src]="hero.thumbnail" alt="">
         </div>
       </div>
+    </ng-container>
 
-      <div class="videos-container">
+    <ng-container *ngIf="items$ | async as items">
+      <div class="videos-container font-white">
         <ng-container *ngFor="let item of items">
-          <h3>{{ item.genre }}</h3>
-          <div class="videos">
-            <ng-container *ngFor="let video of item.videos">
-              <img class="image" [src]="video.thumbnail" alt="">
-            </ng-container>
+          <div *ngIf="item.videos.length > 0" class="p-t-40">
+            <h3>{{ item.genre }}</h3>
+            <div class="videos">
+              <ng-container *ngFor="let video of item.videos">
+                <img class="image" [src]="video.thumbnail" alt="">
+              </ng-container>
+            </div>
           </div>
         </ng-container>
       </div>
     </ng-container>
   </div>
 
-  <app-footer />
+  <app-footer [classes]="['justify-end', 'm-r-96']" />
 </div>

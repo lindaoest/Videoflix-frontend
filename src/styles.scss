@@ -26,6 +26,10 @@ input::placeholder {
   color: #FFFFFF;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
 .error-message {
   color: #ff0000;
 }
@@ -36,6 +40,11 @@ input::placeholder {
 
 .text-center {
   text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
 }
 
 h2 {
@@ -81,6 +90,10 @@ p {
   margin-bottom: 32px;
 }
 
+.p-t-40 {
+  padding-top: 40px;
+}
+
 .c-pointer {
   cursor: pointer;
 }
@@ -94,4 +107,17 @@ p {
   flex-direction: column;
   min-height: 100vh;
   position: relative;
+  margin-bottom: 103px;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-end {
+  justify-content: flex-end!important;
+}
+
+.m-r-96 {
+  margin-right: 96px;
 }

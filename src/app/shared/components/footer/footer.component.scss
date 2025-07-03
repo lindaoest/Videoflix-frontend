@@ -1,12 +1,12 @@
 footer {
-  position: absolute;
-  left: 0;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
 
   .inner-footer {
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 48px;
     padding: 40px 0;

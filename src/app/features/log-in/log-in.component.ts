@@ -43,11 +43,16 @@ export class LogInComponent {
       "password": this.form.controls['password'].value,
     }
 
-    this.http.post('http://localhost:8000/api/login/', body, { withCredentials: true })
+    this.http.post(
+      'http://localhost:8000/api/login/',
+      body,
+      { withCredentials: true }
+    )
     .subscribe({
       next: (value: any) => {
-        // this.authService.logIn(value['token']);
         this.router.navigate(['/overview']);
+        localStorage.setItem('isLoggedIn', 'true')
+        // this.authService.isLoggedIn = true;
         console.log('value', value);
       },
       error: err => {

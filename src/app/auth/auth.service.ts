@@ -7,26 +7,48 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  public errorMessage!: string;
+  public isLoggedIn: boolean = false;
+
   constructor(
     private router: Router,
     private http: HttpClient
   ) { }
 
-  public logIn(token: string) {
-    localStorage.setItem('TOKEN', token);
-  }
+  public logIn(body: any) {
+    this.http.post(
+      'http://localhost:8000/api/login/',
+      body,
+      { withCredentials: true }
+    )
+    .subscribe({
+      next: (value: any) => {
+        this.router.navigate(['/overview']);
+        this.isLoggedIn = true;
+        console.log('value', value);
+      },
+      error: err => {
+        console.log('error', err);
 
-  public isLoggedIn() {
-    return localStorage.getItem('TOKEN');
+        this.errorMessage = err.error.message;
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 5000);
+      }
+    });
   }
 
   public logOut() {
-    // localStorage.removeItem('TOKEN');
-    this.http.post('http://localhost:8000/api/logout/', null, {
-      withCredentials: true
-    })
+    this.http.post(
+      'http://localhost:8000/api/logout/',
+      null,
+      { withCredentials: true }
+    )
     .subscribe({
-      next: value => this.router.navigate(['/log-in']),
+      next: value => {
+        this.router.navigate(['/log-in']);
+        this.isLoggedIn = false;
+      },
       error: err => console.error('Fehler beim Logout:', err)
     })
   }
